@@ -1,6 +1,39 @@
 (function(){
     // HTML DOM Elements
     const booksDiv = document.querySelector('.books');
+    const titleField = document.querySelector('.book-title-field');
+    const authorField = document.querySelector('.book-author-field');
+    const pagesField = document.querySelector('.book-page-field');
+    const readField = document.querySelector('.book-read-field');
+    const bookForm = document.querySelector('.new-book-form');
+
+    // Library variables
+    let myLibrary = [];
+
+    // Event listeners
+    bookForm.addEventListener('submit', addBook);
+
+    // Helper functions
+    function addBook(event) {
+        // Prevents page from reloading
+        event.preventDefault();
+
+        // Get book info from fields
+        const bookTitle = titleField.value;
+        const bookAuthor = authorField.value;
+        const bookPages = pagesField.value;
+        const readFlag = (readField.value === 'true');
+
+        // Create a book and add it to the page
+        const book = new Book(bookTitle, bookAuthor, bookPages, readFlag);
+        myLibrary.push(book);
+        book.render();
+
+        // Reset fields
+        titleField.value = '';
+        authorField.value = '';
+        pagesField.value = '';
+    }
 
     // Book Class
     function Book(title, author, pages, readFlag) {
