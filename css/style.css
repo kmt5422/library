@@ -1,0 +1,75 @@
+body {
+    background-color: cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    margin-top: 5rem;
+}
+
+h1 {
+    font-size: 3rem;;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    background-color: white;
+    width: 40%;
+    padding: 0 2rem 2rem 1rem;
+    border-radius: 5px;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+input {
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+}
+
+button {
+    width: 6rem;
+    margin: 1rem auto 0 auto;
+}
+
+.books {
+    margin-top: 5rem;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+}
+
+.book {
+    background-color: white;
+    border-radius: 5px;
+    height: 7rem;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.book > h2 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    background-color: navy;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.book > p:nth-child(2) {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.book > p {
+    padding-left: 0.5rem;
+}
