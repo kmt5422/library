@@ -9,10 +9,6 @@
     const newBookBtn = document.querySelector('.new-book-btn');
     const closeFormBtn = document.querySelector('span');
 
-    // Library variables
-    let myLibrary = [];
-    let bookCounter = 0;
-
     // Event listeners
     bookForm.addEventListener('submit', addBook);
     newBookBtn.addEventListener('click', showForm);
@@ -41,6 +37,8 @@
 
         // Hide form
         bookForm.style.display = 'none';
+
+        localStorage.myLibrary = JSON.stringify(myLibrary);
     }
 
     function showForm(event) {
@@ -52,6 +50,7 @@
         console.log(myLibrary[0]);
         myLibrary = myLibrary.filter( book => book.id != id);
         booksDiv.removeChild(this.parentElement);
+        localStorage.myLibrary = JSON.stringify(myLibrary);
     }
 
     // Book Class
@@ -94,6 +93,8 @@
                 event.target.parentElement.classList.add('read');
                 targetBook.readFlag = true;
             }
+
+            localStorage.myLibrary = JSON.stringify(myLibrary);
         });
         bookDescRead.classList.add('book-read-status');
         removeBtn.textContent = 'Remove';
@@ -119,13 +120,10 @@
         // Append the book div as a childe to the books div
         booksDiv.appendChild(bookDiv);
     }
-
-    const book = new Book('The Hobbit', 'J.R.R Tolkien', 295, bookCounter++, true);
-    book.render();
-
-    const book2 = new Book('Harry Potter', 'J.K Rowling', 1027, bookCounter++, true);
-    book2.render();
-
-    myLibrary.push(book);
-    myLibrary.push(book2);
+    // Library variables
+    let bookCounter = 0;
+    let myLibrary = [];
+    let myLibraryTemp = JSON.parse(localStorage.myLibrary);
+    myLibraryTemp.forEach(book => myLibrary.push(new Book(book.title, book.author, book.pages, bookCounter++, book.readFlag)));
+    myLibrary.forEach(book => book.render());
 })();
