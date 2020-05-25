@@ -14,13 +14,25 @@ h1 {
 }
 
 form {
-    display: flex;
+    display: none;
     flex-direction: column;
     margin-top: 2rem;
     background-color: white;
     width: 40%;
-    padding: 0 2rem 2rem 1rem;
+    padding: 1rem 2rem 1rem 1rem;
     border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    position: relative;
+    z-index: 1;
+}
+
+span {
+    position: absolute;
+    right: 5px;
+    top: -3px;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 label {
@@ -40,6 +52,20 @@ button {
     margin: 1rem auto 0 auto;
 }
 
+.new-book-btn {
+    height: 2rem;
+    border-radius: 10px;
+    border-width: 0px;
+    background-color: navy;
+    color: white;
+    margin-top: 3rem;
+    cursor: pointer;
+}
+
+.new-book-btn:hover {
+    background-color: teal;
+}
+
 .books {
     margin-top: 5rem;
     width: 90%;
@@ -51,7 +77,7 @@ button {
 .book {
     background-color: white;
     border-radius: 5px;
-    height: 7rem;
+    /* height: 7rem; */
     border-style: solid;
     border-width: 2px;
 }
@@ -72,4 +98,18 @@ button {
 
 .book > p {
     padding-left: 0.5rem;
+}
+
+.not-read > h2 {
+    background-color: red;
+}
+
+.btn-remove {
+    height: 1.5rem;
+    background-color: red;
+    color: white;
+    margin: 1.5rem auto 1rem auto;
+    display: block;
+    border-style: none;
+    border-radius: 5px;
 }
