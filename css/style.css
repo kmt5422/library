@@ -113,3 +113,18 @@ button {
     border-style: none;
     border-radius: 5px;
 }
+
+.book-read-status {
+    margin-top: 0.5rem;
+    text-decoration: underline;
+    color: green;
+    cursor: pointer;
+}
+
+.book-read-status-read {
+    color: green;
+}
+
+.book-read-status-not-read {
+    color: red;
+}

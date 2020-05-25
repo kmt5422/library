@@ -69,12 +69,33 @@
         const bookHeading = document.createElement('h2');
         const bookDescAuthor = document.createElement('p');
         const bookDescPages = document.createElement('p');
+        const bookDescRead = document.createElement('p');
         const removeBtn = document.createElement('button');
 
         // Update Element text content
         bookHeading.textContent = this.title;
         bookDescAuthor.textContent = `Author: ${this.author}`;
         bookDescPages.textContent = `Pages: ${this.pages} pages`;
+        bookDescRead.textContent = (this.readFlag) ? 'Mark Unread' : 'Mark Read';
+        bookDescRead.addEventListener('click', event => {
+            const targetBook = myLibrary.find(book => event.target.parentElement.getAttribute('data-id') == book.id);
+            if (targetBook.readFlag) {
+                event.target.textContent = 'Mark Read';
+                event.target.classList.remove('book-read-status-read');
+                event.target.classList.add('book-read-status-not-read');
+                event.target.parentElement.classList.remove('read');
+                event.target.parentElement.classList.add('not-read');
+                targetBook.readFlag = false;
+            } else {
+                event.target.textContent = 'Mark Unread';
+                event.target.classList.remove('book-read-status-not-read');
+                event.target.classList.add('book-read-status-read');
+                event.target.parentElement.classList.remove('not-read');
+                event.target.parentElement.classList.add('read');
+                targetBook.readFlag = true;
+            }
+        });
+        bookDescRead.classList.add('book-read-status');
         removeBtn.textContent = 'Remove';
         removeBtn.classList.add('btn-remove');
         removeBtn.addEventListener('click', removeBook);
@@ -83,6 +104,7 @@
         bookDiv.appendChild(bookHeading);
         bookDiv.appendChild(bookDescAuthor);
         bookDiv.appendChild(bookDescPages);
+        bookDiv.appendChild(bookDescRead);
         bookDiv.appendChild(removeBtn);
 
         // Add book classes
@@ -103,4 +125,7 @@
 
     const book2 = new Book('Harry Potter', 'J.K Rowling', 1027, bookCounter++, true);
     book2.render();
+
+    myLibrary.push(book);
+    myLibrary.push(book2);
 })();
