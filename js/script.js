@@ -12,7 +12,7 @@
     // Event listeners
     bookForm.addEventListener('submit', addBook);
     newBookBtn.addEventListener('click', showForm);
-    closeFormBtn.addEventListener('click', () => bookForm.style.display = 'none');
+    closeFormBtn.addEventListener('click', () => bookForm.classList.remove('display'));
 
     // Helper functions
     function addBook(event) {
@@ -36,13 +36,13 @@
         pagesField.value = '';
 
         // Hide form
-        bookForm.style.display = 'none';
+        bookForm.classList.remove('display');
 
         localStorage.myLibrary = JSON.stringify(myLibrary);
     }
 
     function showForm(event) {
-        bookForm.style.display = 'flex';
+        bookForm.classList.add('display');
     }
 
     function removeBook(event) {
