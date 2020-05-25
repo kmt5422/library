@@ -76,6 +76,7 @@
         bookDescAuthor.textContent = `Author: ${this.author}`;
         bookDescPages.textContent = `Pages: ${this.pages} pages`;
         bookDescRead.textContent = (this.readFlag) ? 'Mark Unread' : 'Mark Read';
+        bookDescRead.classList.add(this.readFlag ? 'book-read-status-read' : 'book-read-status-not-read');
         bookDescRead.addEventListener('click', event => {
             const targetBook = myLibrary.find(book => event.target.parentElement.getAttribute('data-id') == book.id);
             if (targetBook.readFlag) {
