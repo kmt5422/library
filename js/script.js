@@ -54,15 +54,16 @@
     }
 
     // Book Class
-    function Book(title, author, pages, id, readFlag) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.id = id;
-        this.readFlag = readFlag;
-    }
+    class Book {
+        constructor(bookTitle, bookAuthor, bookPages, bookID, bookReadFlag) {
+            this.title = bookTitle;
+            this.author = bookAuthor;
+            this.pages = bookPages;
+            this.id = bookID;
+            this.readFlag = bookReadFlag;
+        }
 
-    Book.prototype.render = function() {
+        render() {
         // Create HTML Elements
         const bookDiv = document.createElement('div');
         const bookHeading = document.createElement('h2');
@@ -120,7 +121,9 @@
 
         // Append the book div as a childe to the books div
         booksDiv.appendChild(bookDiv);
+        }
     }
+
     // Library variables
     let bookCounter = 0;
     let myLibrary = [];
